@@ -14,8 +14,8 @@ exports.addFoundItem = async (req, res) => {
     } = req.body;
 
     const [result] = await db.query(
-      "INSERT INTO found_items (item_name, description, location, date_found, contact_name, contact_info) VALUES (?, ?, ?, ?, ?, ?)",
-      [item_name, description, location, date_found, contact_name, contact_info]
+      "INSERT INTO found_items (item_name, description, location, date_found, contact_name, contact_info, status) VALUES (?, ?, ?, ?, ?, ?, 'found')",
+      [item_name, description, location, date_found, contact_name, contact_info,]
     );
 
     const insertedItem = {
@@ -26,6 +26,7 @@ exports.addFoundItem = async (req, res) => {
       date_found,
       contact_name,
       contact_info,
+      status: "found",
     };
 
     const [matches] = await db.query(

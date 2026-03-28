@@ -32,8 +32,8 @@ exports.addLostItem = (req, res) => {
 
   const sql = `
     INSERT INTO lost_items
-      (item_name, description, location, date_lost, contact_name, contact_info)
-    VALUES (?, ?, ?, ?, ?, ?)
+      (item_name, description, location, date_lost, contact_name, contact_info, status)
+    VALUES (?, ?, ?, ?, ?, ?, 'lost')
   `;
 
   db.query(
@@ -52,6 +52,7 @@ exports.addLostItem = (req, res) => {
         date_lost,
         contact_name,
         contact_info,
+        status: "lost",
       });
     }
   );
