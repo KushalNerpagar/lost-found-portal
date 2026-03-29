@@ -25,8 +25,11 @@ function FoundForm({ onSubmit }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
-      if (!res.ok) throw new Error('Failed to submit found item')
       const data = await res.json()
+      if (!res.ok) {
+        alert(data.error || 'Failed to submit found item')
+        return
+      }
       setMatches(data.matches || [])
       setFormData(initialForm)
       onSubmit?.()
@@ -57,7 +60,6 @@ function FoundForm({ onSubmit }) {
         </button>
       </form>
 
-      {/* Match Results */}
       {matches !== null && (
         <div className="mt-4">
           {matches.length === 0 ? (

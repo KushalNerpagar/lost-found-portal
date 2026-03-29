@@ -23,7 +23,11 @@ function LostForm({ onSubmit }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
-      if (!res.ok) throw new Error('Failed to submit lost item')
+      const data = await res.json()
+      if (!res.ok) {
+        alert(data.error || 'Failed to submit lost item')
+        return
+      }
       setFormData(initialForm)
       alert('✅ Lost item reported!')
       onSubmit?.()
