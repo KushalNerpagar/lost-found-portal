@@ -61,7 +61,7 @@ function FoundForm({ onSubmit }) {
 
   return (
     <section className="rounded-lg bg-white p-5 shadow">
-      <h2 className="mb-4 text-xl font-semibold text-slate-800">📦 Report Found Item</h2>
+      <h2 className="mb-4 text-xl font-semibold text-slate-800"> Report Found Item</h2>
       <form className="space-y-3" onSubmit={handleSubmit}>
         <input className={inputClass} name="item_name"    placeholder="Item name"        value={formData.item_name}    onChange={handleChange} required />
         <input className={inputClass} name="description"  placeholder="Description"      value={formData.description}  onChange={handleChange} required />
@@ -103,8 +103,8 @@ function FoundForm({ onSubmit }) {
                 <div key={m.id} className="mb-2 rounded-md border border-emerald-200 bg-emerald-50 p-3 text-sm">
                   <p className="font-medium text-slate-800">{m.item_name}</p>
                   <p className="text-slate-600">{m.description}</p>
-                  <p className="text-slate-600">📍 {m.location}</p>
-                  <p className="text-slate-600">👤 {m.contact_name} — {m.contact_info}</p>
+                  <p className="text-slate-600"> {m.location}</p>
+                  <p className="text-slate-600"> {m.contact_name} — {m.contact_info}</p>
                 </div>
               ))}
             </div>

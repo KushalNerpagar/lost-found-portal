@@ -39,7 +39,6 @@ function LostList() {
       const res = await fetch(`http://localhost:5000/lost-items/${id}/resolve`, { method: 'PATCH' })
       if (!res.ok) throw new Error('Failed to resolve')
 
-      // Show resolved badge for 3 seconds then remove from list
       setResolvingIds((prev) => [...prev, id])
       setTimeout(() => {
         setItems((prev) => prev.filter((item) => item.id !== id))
@@ -54,7 +53,7 @@ function LostList() {
     <section className="rounded-lg bg-white p-5 shadow">
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="flex items-center gap-2 text-xl font-semibold text-slate-800">
-          📋 Lost Items
+           Lost Items
           <span className="rounded-full bg-slate-100 px-2 py-0.5 text-sm font-normal text-slate-500">
             {items.length}
           </span>
@@ -95,20 +94,20 @@ function LostList() {
                       ? 'bg-green-100 text-green-700'
                       : 'bg-red-100 text-red-700'
                   }`}>
-                    {isResolving ? '✅ resolved' : item.status}
+                    {isResolving ? ' resolved' : item.status}
                   </span>
                 </div>
                 <p className="mt-1 text-sm text-slate-600">{item.description}</p>
-                <p className="mt-2 text-sm text-slate-700">📍 {item.location}</p>
-                <p className="text-sm text-slate-700">📅 {item.date_lost?.slice(0, 10)}</p>
-                <p className="mt-2 text-sm text-slate-700">👤 {item.contact_name} — {item.contact_info}</p>
+                <p className="mt-2 text-sm text-slate-700">{item.location}</p>
+                <p className="text-sm text-slate-700"> {item.date_lost?.slice(0, 10)}</p>
+                <p className="mt-2 text-sm text-slate-700"> {item.contact_name} — {item.contact_info}</p>
               </div>
               {!isResolving && (
                 <button
                   onClick={() => handleResolve(item.id)}
                   className="mt-3 w-full rounded-md bg-blue-600 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
                 >
-                  ✅ Mark as Resolved
+                   Mark as Resolved
                 </button>
               )}
               {isResolving && (

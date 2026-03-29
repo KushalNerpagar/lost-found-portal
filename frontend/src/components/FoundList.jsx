@@ -54,7 +54,7 @@ function FoundList() {
     <section className="rounded-lg bg-white p-5 shadow">
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="flex items-center gap-2 text-xl font-semibold text-slate-800">
-          📦 Found Items
+           Found Items
           <span className="rounded-full bg-slate-100 px-2 py-0.5 text-sm font-normal text-slate-500">
             {items.length}
           </span>
@@ -95,20 +95,20 @@ function FoundList() {
                       ? 'bg-green-100 text-green-700'
                       : 'bg-emerald-100 text-emerald-700'
                   }`}>
-                    {isResolving ? '✅ resolved' : item.status}
+                    {isResolving ? ' resolved' : item.status}
                   </span>
                 </div>
                 <p className="mt-1 text-sm text-slate-600">{item.description}</p>
-                <p className="mt-2 text-sm text-slate-700">📍 {item.location}</p>
-                <p className="text-sm text-slate-700">📅 {item.date_found?.slice(0, 10)}</p>
-                <p className="mt-2 text-sm text-slate-700">👤 {item.contact_name} — {item.contact_info}</p>
+                <p className="mt-2 text-sm text-slate-700"> {item.location}</p>
+                <p className="text-sm text-slate-700"> {item.date_found?.slice(0, 10)}</p>
+                <p className="mt-2 text-sm text-slate-700"> {item.contact_name} — {item.contact_info}</p>
               </div>
               {!isResolving && (
                 <button
                   onClick={() => handleResolve(item.id)}
                   className="mt-3 w-full rounded-md bg-emerald-600 py-1.5 text-sm font-medium text-white hover:bg-emerald-700"
                 >
-                  ✅ Mark as Resolved
+                Mark as Resolved
                 </button>
               )}
               {isResolving && (

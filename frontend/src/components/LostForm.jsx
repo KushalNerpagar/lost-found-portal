@@ -59,7 +59,7 @@ function LostForm({ onSubmit }) {
 
   return (
     <section className="rounded-lg bg-white p-5 shadow">
-      <h2 className="mb-4 text-xl font-semibold text-slate-800">📋 Report Lost Item</h2>
+      <h2 className="mb-4 text-xl font-semibold text-slate-800"> Report Lost Item</h2>
       <form className="space-y-3" onSubmit={handleSubmit}>
         <input className={inputClass} name="item_name"    placeholder="Item name"        value={formData.item_name}    onChange={handleChange} required />
         <input className={inputClass} name="description"  placeholder="Description"      value={formData.description}  onChange={handleChange} required />
