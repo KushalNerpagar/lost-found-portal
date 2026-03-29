@@ -5,7 +5,7 @@ function LostList() {
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [error, setError] = useState('')
-  const [resolvingIds, setResolvingIds] = useState([]) // items showing "resolved" badge before hiding
+  const [resolvingIds, setResolvingIds] = useState([]) 
 
   const fetchItems = async (q = '') => {
     setLoading(true)
@@ -107,7 +107,7 @@ function LostList() {
                   onClick={() => handleResolve(item.id)}
                   className="mt-3 w-full rounded-md bg-blue-600 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
                 >
-                   Mark as Resolved
+                 Mark as Resolved
                 </button>
               )}
               {isResolving && (

@@ -39,7 +39,6 @@ function FoundList() {
       const res = await fetch(`http://localhost:5000/found-items/${id}/resolve`, { method: 'PATCH' })
       if (!res.ok) throw new Error('Failed to resolve')
 
-      // Show resolved state for 3 seconds then remove
       setResolvingIds((prev) => [...prev, id])
       setTimeout(() => {
         setItems((prev) => prev.filter((item) => item.id !== id))

@@ -13,7 +13,6 @@ exports.addLostItem = async (req, res) => {
   }
 
   try {
-    // Duplicate prevention — same item_name + location + contact_info
     const [existing] = await db.query(
       `SELECT id FROM lost_items WHERE item_name = ? AND location = ? AND contact_info = ?`,
       [item_name, location, contact_info]
@@ -80,9 +79,7 @@ exports.searchLostItems = async (req, res) => {
 exports.resolveLostItem = async (req, res) => {
   const { id } = req.params;
   try {
-    // Delete related matches first (foreign key safety)
     await db.query(`DELETE FROM matches WHERE lost_item_id = ?`, [id]);
-    // Delete the item itself
     await db.query(`DELETE FROM lost_items WHERE id = ?`, [id]);
     return res.json({ message: "Item resolved and removed." });
   } catch (err) {

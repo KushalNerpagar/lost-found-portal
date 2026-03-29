@@ -10,14 +10,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// db.query("SELECT 1", (err) => {
-//   if (err) {
-//     console.error("Database connection test failed:", err.message);
-//     return;
-//   }
-//   console.log("Database connected successfully");
-// });
-
 (async () => {
   try {
     await db.query("SELECT 1");

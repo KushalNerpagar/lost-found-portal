@@ -45,7 +45,7 @@ function LostForm({ onSubmit }) {
       }
       setFormData(initialForm)
       setPhoneError('')
-      alert('✅ Lost item reported!')
+      alert('Lost item reported!')
       onSubmit?.()
     } catch (err) {
       alert(err.message)

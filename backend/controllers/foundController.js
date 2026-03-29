@@ -4,7 +4,6 @@ exports.addFoundItem = async (req, res) => {
   try {
     const { item_name, description, location, date_found, contact_name, contact_info } = req.body;
 
-    // Duplicate prevention — check same item_name + location + contact_info
     const [existing] = await db.query(
       `SELECT id FROM found_items WHERE item_name = ? AND location = ? AND contact_info = ?`,
       [item_name, location, contact_info]
@@ -83,9 +82,7 @@ exports.searchFoundItems = async (req, res) => {
 exports.resolveFoundItem = async (req, res) => {
   try {
     const { id } = req.params;
-    // Delete related matches first (foreign key safety)
     await db.query(`DELETE FROM matches WHERE found_item_id = ?`, [id]);
-    // Delete the item itself
     await db.query(`DELETE FROM found_items WHERE id = ?`, [id]);
     return res.json({ message: "Item resolved and removed." });
   } catch (err) {
